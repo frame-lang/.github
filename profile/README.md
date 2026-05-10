@@ -1,6 +1,6 @@
 # Frame
 
-**A domain-specific language for state machines, embedded in your native source code.** Frame brings state machines as a first-class abstraction to **17 target languages** — Python, TypeScript, JavaScript, Rust, C, C++, Java, C#, Go, PHP, Kotlin, Swift, Ruby, Erlang, Lua, Dart, GDScript — plus Graphviz for state-diagram visualization.
+**Frame is a domain-specific language for state machines, embedded in your native source code.** Frame enables developers to add state machines as a first-class abstraction to **17 target languages** — Python, TypeScript, JavaScript, Rust, C, C++, Java, C#, Go, PHP, Kotlin, Swift, Ruby, Erlang, Lua, Dart, GDScript — plus Graphviz for state-diagram visualization.
 
 You write your project in your chosen language. Frame `@@system` blocks inside your source file expand into idiomatic state-machine implementations in that same language. Everything outside the `@@system` blocks passes through unchanged. The result: native code, no runtime dependency, drop-in ready.
 
