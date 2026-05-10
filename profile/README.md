@@ -1,6 +1,6 @@
 # Frame
 
-**A domain-specific language for state machines, embedded in your native source code.** Frame enables the state machine to be a first-class entity in **17 target languages** — Python, TypeScript, JavaScript, Rust, C, C++, Java, C#, Go, PHP, Kotlin, Swift, Ruby, Erlang, Lua, Dart, GDScript — plus Graphviz for state-diagram visualization.
+**A domain-specific language for state machines, embedded in your native source code.** Frame brings state machines as a first-class abstraction to **17 target languages** — Python, TypeScript, JavaScript, Rust, C, C++, Java, C#, Go, PHP, Kotlin, Swift, Ruby, Erlang, Lua, Dart, GDScript — plus Graphviz for state-diagram visualization.
 
 You write your project in your chosen language. Frame `@@system` blocks inside your source file expand into idiomatic state-machine implementations in that same language. Everything outside the `@@system` blocks passes through unchanged. The result: native code, no runtime dependency, drop-in ready.
 
@@ -45,9 +45,9 @@ if __name__ == "__main__":
         light.next()
 ```
 
-Run `framec traffic.fpy -o traffic.py` and you get a complete Python file: the `import` and the `if __name__` block pass through verbatim, and the `@@system TrafficLight` block is replaced by a Python class that implements the state machine. Run the output with `python traffic.py` and the lights cycle. (`framec` autodetects the target from the `@@[target]` directive in the source — no extra flag needed.)
+Run `framec traffic.fpy > traffic.py` and you get a complete Python file: the `import` and the `if __name__` block pass through verbatim, and the `@@system TrafficLight` block is replaced by a Python class that implements the state machine. Run the output with `python traffic.py` to exercise 6 transitions (Red → Green → Yellow → Red → Green → Yellow). The example handlers don't print anything, so the run is silent — add `logging.info(...)` calls inside the handler bodies to see each transition. (`framec` autodetects the target from the `@@[target]` directive in the source — no extra flag needed.)
 
-The same approach works in any of the 17 supported languages — change `@@[target("python_3")]` to `@@[target("rust")]`, rename the file to use a Rust-flavored extension (`.frust`), and `framec` produces Rust. Frame's job is to make state machines first-class in *your* language, not to translate between languages.
+The same approach works in any of the 17 supported languages — change `@@[target("python_3")]` to `@@[target("rust")]`, rename the file to use a Rust-flavored extension (`.frust`), and `framec traffic.frust > traffic.rs` produces Rust. Frame's job is to make state machines first-class in *your* language, not to translate between languages.
 
 For visualization, Frame can also emit a Graphviz `.dot` diagram of any state machine — pipe through `dot` for an image: `framec -l graphviz traffic.fpy | dot -Tpng -o traffic.png`.
 
