@@ -40,7 +40,7 @@ import logging
 }
 
 if __name__ == "__main__":
-    light = TrafficLight()
+    light = @@TrafficLight()
     for _ in range(6):
         light.next()
 ```
