@@ -45,11 +45,11 @@ if __name__ == "__main__":
         light.next()
 ```
 
-Run `framec compile traffic.fpy` and you get a complete Python file: the `import` and the `if __name__` block pass through verbatim, and the `@@system TrafficLight` block is replaced by a Python class that implements the state machine. Run the output with `python` and the lights cycle.
+Run `framec traffic.fpy -o traffic.py` and you get a complete Python file: the `import` and the `if __name__` block pass through verbatim, and the `@@system TrafficLight` block is replaced by a Python class that implements the state machine. Run the output with `python traffic.py` and the lights cycle. (`framec` autodetects the target from the `@@[target]` directive in the source — no extra flag needed.)
 
-The same approach works in any of the 17 supported languages — change `@@[target("python_3")]` to `@@[target("rust")]`, save as `.frust`, and `framec compile` gives you Rust. Frame's job is to make state machines first-class in *your* language, not to translate between languages.
+The same approach works in any of the 17 supported languages — change `@@[target("python_3")]` to `@@[target("rust")]`, rename the file to use a Rust-flavored extension (`.frust`), and `framec` produces Rust. Frame's job is to make state machines first-class in *your* language, not to translate between languages.
 
-For visualization, Frame can also emit a Graphviz `.dot` diagram of any state machine — useful for review, documentation, or just sanity-checking the structure.
+For visualization, Frame can also emit a Graphviz `.dot` diagram of any state machine — pipe through `dot` for an image: `framec -l graphviz traffic.fpy | dot -Tpng -o traffic.png`.
 
 ---
 
